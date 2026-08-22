@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="CCLW — Costa Creus Lab Works. Work, Lab & Personal projects.">
+  <title>CCLW_ — Costa Creus Lab Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="topbar shell">
+    <a class="prompt brand-mini" href="#top">cclw@lab:~$ <span class="cursor">_</span></a>
+    <nav aria-label="Navegació principal">
+      <a href="#about">about</a>
+      <a href="#stack">stack</a>
+      <a href="#notes">notes</a>
+      <a href="#log">log</a>
+      <span class="status-dot" title="online" aria-label="online"></span>
+    </nav>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero">
+      <div>
+        <h1>CCLW<span class="cursor">_</span></h1>
+        <p class="subtitle">Costa Creus Lab Works</p>
+        <p class="lead">&gt; systems. experiments. infrastructure.<br>building useful things.</p>
+      </div>
+
+      <aside class="status-card" aria-label="System status">
+        <div class="status-card__head">
+          <span>SYSTEM STATUS</span><span>-</span>
+        </div>
+        <dl>
+          <div><dt>LOCATION</dt><dd>Sabadell / Barcelona</dd></div>
+          <div><dt>TIME</dt><dd id="clock">--:--:--</dd></div>
+          <div><dt>UPTIME</dt><dd>always building</dd></div>
+          <div><dt>FOCUS</dt><dd>Build. Learn. Share.</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="environments" aria-labelledby="select-env">
+      <p id="select-env" class="section-kicker">&gt; select environment</p>
+
+      <div class="cards">
+        <article class="card" id="work">
+          <div class="card-top"><span>01.</span><span>→</span></div>
+          <h2>WORK<span class="cursor">_</span></h2>
+          <div class="accent-line"></div>
+          <p>Projects that solve real problems.<br>Business, data, automation,<br>systems and productivity.</p>
+          <ul>
+            <li>supplier-pricing-engine</li>
+            <li>a3erp-data-layer</li>
+            <li>company-knowledge-base</li>
+            <li>more...</li>
+          </ul>
+          <a class="terminal-button" href="./work.html">&gt; enter work</a>
+        </article>
+
+        <article class="card" id="lab">
+          <div class="card-top"><span>02.</span><span>→</span></div>
+          <h2>LAB<span class="cursor">_</span></h2>
+          <div class="accent-line"></div>
+          <p>Experimental playground.<br>Linux, code, AI, infrastructure,<br>tools and crazy ideas.</p>
+          <ul>
+            <li>hetzner-linux</li>
+            <li>ai-agents</li>
+            <li>mcp-experiments</li>
+            <li>more...</li>
+          </ul>
+          <a class="terminal-button" href="./lab.html">&gt; enter lab</a>
+        </article>
+
+        <article class="card" id="personal">
+          <div class="card-top"><span>03.</span><span>→</span></div>
+          <h2>PERSONAL<span class="cursor">_</span></h2>
+          <div class="accent-line"></div>
+          <p>Notes, thoughts and side projects.<br>Everything that doesn’t need<br>a label.</p>
+          <ul>
+            <li>reading-tools</li>
+            <li>small-utilities</li>
+            <li>ideas</li>
+            <li>more...</li>
+          </ul>
+          <a class="terminal-button" href="./personal.html">&gt; enter personal</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="footer-grid">
+      <div>
+        <p class="prompt">&gt; cclw_</p>
+        <p>not a startup.<br>just a lab.<br>things i want to build.</p>
+        <small>© 2026 CCLW</small>
+      </div>
+
+      <div class="motto">
+        stay curious.<br>
+        keep building.<br>
+        &gt; <span class="cursor">_</span>
+      </div>
+    </section>
+
+    <section id="stack" class="hidden-anchor" aria-hidden="true"></section>
+    <section id="notes" class="hidden-anchor" aria-hidden="true"></section>
+    <section id="log" class="hidden-anchor" aria-hidden="true"></section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

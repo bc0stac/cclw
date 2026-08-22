@@ -1,0 +1,103 @@
+:root{
+  --bg:#070909;
+  --panel:#0a0d0c;
+  --text:#e5e9e6;
+  --muted:#a6ada8;
+  --line:#404640;
+  --green:#48e15b;
+  --green-soft:#9cff8f;
+  --max:1440px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(255,255,255,.025), transparent 35%),
+    var(--bg);
+  color:var(--text);
+  font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
+  line-height:1.55;
+}
+a{color:inherit;text-decoration:none}
+.shell{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+.scanlines{
+  position:fixed;inset:0;pointer-events:none;z-index:999;
+  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.012) 0,rgba(255,255,255,.012) 1px,transparent 1px,transparent 4px);
+  opacity:.2
+}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:28px 0 18px;
+}
+.brand-mini{color:var(--green-soft)}
+nav{display:flex;align-items:center;gap:34px;color:#c7ccc8}
+nav a:hover{color:var(--green)}
+.status-dot{width:11px;height:11px;border-radius:50%;background:var(--green);box-shadow:0 0 14px rgba(72,225,91,.35)}
+.hero{
+  display:grid;grid-template-columns:1.55fr .85fr;gap:70px;align-items:start;
+  padding:72px 0 58px;border-bottom:1px solid var(--line);
+}
+h1{font-size:clamp(68px,8vw,120px);line-height:.88;margin:0 0 20px;font-weight:500;letter-spacing:-.055em}
+.subtitle{font-size:clamp(20px,2vw,29px);color:var(--green);margin:0 0 36px}
+.lead{font-size:18px;color:#d0d5d1}
+.cursor{animation:blink 1.05s steps(1,end) infinite}
+@keyframes blink{50%{opacity:0}}
+.status-card{border:1px solid var(--line);margin-top:10px}
+.status-card__head{display:flex;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--line);color:var(--green)}
+.status-card dl{margin:0;padding:20px}
+.status-card dl div{display:grid;grid-template-columns:110px 1fr;gap:20px;margin:9px 0}
+.status-card dt{color:#cbd0cc}.status-card dd{margin:0;color:var(--green)}
+.environments{padding:26px 0 42px;border-bottom:1px solid var(--line)}
+.section-kicker{margin:0 0 22px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.card{
+  min-height:470px;border:1px solid var(--line);padding:28px;
+  display:flex;flex-direction:column;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+  background:rgba(255,255,255,.003)
+}
+.card:hover{transform:translateY(-4px);border-color:#687168;background:rgba(72,225,91,.012)}
+.card-top{display:flex;justify-content:space-between;color:var(--green);font-size:20px}
+.card h2{font-size:31px;font-weight:400;margin:18px 0 5px}
+.accent-line{width:38px;height:2px;background:var(--green);margin:0 0 16px}
+.card p{color:#c9ceca;margin:0 0 18px}
+.card ul{list-style:none;padding:18px 0 0;margin:0;border-top:1px dashed #555b56}
+.card li{margin:7px 0;color:#d8ddd9}
+.card li::before{content:"/ ";color:var(--green)}
+.terminal-button{
+  margin:auto auto 0;display:inline-block;border:1px solid #9aa19b;
+  padding:9px 25px;color:var(--green-soft);min-width:210px;text-align:center;
+}
+.terminal-button:hover{border-color:var(--green);background:rgba(72,225,91,.06)}
+.footer-grid{display:grid;grid-template-columns:1fr auto;gap:30px;padding:28px 0 45px;align-items:end}
+.footer-grid p{margin:.25rem 0}.footer-grid small{display:block;margin-top:26px;color:#737b75}
+.prompt{color:var(--green-soft)}
+.motto{border:1px solid #4f8f56;padding:14px 18px;color:var(--green);min-width:230px}
+.hidden-anchor{height:1px}
+
+.subpage{padding:70px 0}
+.subpage h1{font-size:64px}
+.back{display:inline-block;margin-bottom:30px;color:var(--green)}
+.project-list{border-top:1px solid var(--line)}
+.project-row{display:grid;grid-template-columns:80px 1fr auto;gap:25px;padding:18px 0;border-bottom:1px solid var(--line)}
+.project-row span:first-child{color:var(--green)}
+.project-row small{color:var(--muted)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:42px}
+  .cards{grid-template-columns:1fr}
+  nav{display:none}
+  .status-card{max-width:600px}
+  .card{min-height:auto}
+}
+@media (max-width:560px){
+  .shell{width:min(100% - 28px,var(--max))}
+  .topbar{padding-top:18px}
+  .hero{padding-top:30px}
+  h1{font-size:64px}
+  .status-card dl div{grid-template-columns:90px 1fr;gap:10px}
+  .footer-grid{grid-template-columns:1fr}
+  .motto{min-width:0}
+}
