@@ -6,155 +6,166 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 <style>
-/* ---- ia-tesi.html · estils propis d'aquesta pàgina, prefix tz- ---- */
+/* ---- ia-tesi.html · estils propis, prefix tz- ---- */
 .tz{
-  --tz-bg:#070909;
-  --tz-panel:#0a0d0c;
-  --tz-panel-2:#0e1211;
-  --tz-text:#e5e9e6;
-  --tz-muted:#a6ada8;
-  --tz-dim:#6f7873;
+  --tz-panel:#0b0f0e;
+  --tz-panel-2:#0e1312;
+  --tz-text:#e8edea;
+  --tz-body:#c3ccc7;
+  --tz-dim:#8b948f;
+  --tz-faint:#6b736f;
   --tz-accent:#48e15b;
   --tz-accent-soft:#9cff8f;
-  --tz-warn:#e15b48;
-  --tz-line:#1c2321;
-  --tz-line-soft:#151a19;
-  --tz-measure:74ch;
-  font-size:15px;
-  line-height:1.72;
-  color:var(--tz-muted);
+  --tz-warn:#e0a458;
+  --tz-line:#1e2624;
+  --tz-line-soft:#171d1c;
+  --tz-col:44rem;
+  --tz-sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --tz-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
 .tz *{box-sizing:border-box}
-.tz p{color:var(--tz-muted);margin:0}
-.tz p + p{margin-top:.85em}
-.tz strong{color:var(--tz-text);font-weight:600}
-.tz em{color:var(--tz-text);font-style:normal;border-bottom:1px dotted var(--tz-dim)}
-.tz code{color:var(--tz-accent-soft);font-size:.92em}
-.tz .tz-measure{max-width:var(--tz-measure)}
 
-.tz-sec{padding-block:38px;border-top:1px dashed var(--tz-line)}
+/* una sola amplada de columna per a tot */
+.tz-sec > *,.tz-foot > *{max-width:var(--tz-col)}
+.tz .lead{
+  font-family:var(--tz-sans);font-size:1.06rem;line-height:1.6;
+  color:var(--tz-body);max-width:var(--tz-col);
+}
+
+/* prosa */
+.tz p,.tz li{font-family:var(--tz-sans);color:var(--tz-body);max-width:none}
+.tz p{margin:0;font-size:1rem;line-height:1.68}
+.tz p + p{margin-top:.8em}
+.tz strong{color:var(--tz-text);font-weight:600}
+.tz em{font-style:italic;color:var(--tz-text)}
+.tz code{font-family:var(--tz-mono);color:var(--tz-accent-soft);font-size:.88em}
+
+/* seccions */
+.tz-sec{padding-block:44px;border-top:1px solid var(--tz-line)}
 .tz-sec:first-of-type{border-top:0}
-.tz-head{display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+.tz-head{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
 .tz-eyebrow{
-  font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--tz-dim);
+  font-family:var(--tz-mono);font-size:.7rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--tz-faint);
 }
 .tz-eyebrow b{color:var(--tz-accent);font-weight:500}
 .tz h2{
-  font-size:clamp(1.25rem,3.4vw,1.7rem);line-height:1.2;letter-spacing:-.02em;
-  color:var(--tz-text);font-weight:500;margin:0;text-wrap:balance;
+  font-family:var(--tz-mono);font-size:clamp(1.15rem,3vw,1.45rem);line-height:1.28;
+  letter-spacing:-.01em;color:var(--tz-text);font-weight:500;margin:0;
 }
 .tz h3{
-  font-size:1rem;line-height:1.4;color:var(--tz-text);font-weight:600;margin:0;
-  letter-spacing:-.01em;
+  font-family:var(--tz-sans);font-size:1.02rem;line-height:1.4;
+  color:var(--tz-text);font-weight:600;margin:0;
 }
 
 /* fricció */
 .tz-grid2{display:grid;gap:1px;background:var(--tz-line-soft);border:1px solid var(--tz-line-soft);margin:0;padding:0;list-style:none}
-.tz-grid2 li{background:var(--tz-panel);padding:15px 17px;display:grid;gap:4px}
-.tz-grid2 b{color:var(--tz-text);font-weight:600;font-size:.94rem}
-.tz-grid2 span{font-size:.88rem;color:var(--tz-dim)}
-@media(min-width:700px){.tz-grid2{grid-template-columns:1fr 1fr}}
+.tz-grid2 li{background:var(--tz-panel);padding:16px 18px;display:grid;gap:5px}
+.tz-grid2 b{font-family:var(--tz-sans);color:var(--tz-text);font-weight:600;font-size:.96rem}
+.tz-grid2 span{font-family:var(--tz-sans);font-size:.92rem;line-height:1.55;color:var(--tz-dim)}
 
-/* barres de context */
-.tz-bars{display:flex;flex-direction:column;gap:15px}
-.tz-bar{display:grid;gap:6px}
-.tz-bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.tz-bar-name{font-size:.88rem;color:var(--tz-muted)}
-.tz-bar-num{font-size:.8rem;color:var(--tz-dim);font-variant-numeric:tabular-nums;white-space:nowrap}
-.tz-track{height:14px;background:var(--tz-panel-2);border:1px solid var(--tz-line)}
-.tz-fill{height:100%;background:#22452a}
+/* barres */
+.tz-bars{display:flex;flex-direction:column;gap:17px}
+.tz-bar{display:grid;gap:7px}
+.tz-bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.tz-bar-name{font-family:var(--tz-mono);font-size:.8rem;color:var(--tz-dim);letter-spacing:.02em}
+.tz-bar-num{font-family:var(--tz-mono);font-size:.78rem;color:var(--tz-faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tz-track{height:16px;background:var(--tz-panel-2);border:1px solid var(--tz-line)}
+.tz-fill{height:100%;background:#20402a}
 .tz-bar.is-hero .tz-fill{background:var(--tz-accent)}
 .tz-bar.is-hero .tz-bar-name{color:var(--tz-text)}
 .tz-bar.is-hero .tz-bar-num{color:var(--tz-accent-soft)}
-.tz-note{font-size:.76rem;color:var(--tz-dim);border-top:1px dashed var(--tz-line);padding-top:11px;line-height:1.65}
+.tz-note{
+  font-family:var(--tz-mono);font-size:.73rem;color:var(--tz-faint);
+  border-top:1px solid var(--tz-line);padding-top:13px;line-height:1.7;
+}
 
 /* fets */
-.tz-facts{display:grid;gap:12px;margin-top:24px}
-@media(min-width:700px){.tz-facts{grid-template-columns:1fr 1fr}}
-.tz-fact{background:var(--tz-panel);border:1px solid var(--tz-line);padding:17px;display:flex;flex-direction:column;gap:7px}
-.tz-fact .tz-eyebrow{font-size:.68rem}
-.tz-fact .tz-big{font-size:1.3rem;color:var(--tz-accent-soft);letter-spacing:-.02em;line-height:1.15}
-.tz-fact p{font-size:.88rem}
+.tz-facts{display:grid;gap:14px;margin-top:28px}
+.tz-fact{background:var(--tz-panel);border:1px solid var(--tz-line);padding:18px;display:flex;flex-direction:column;gap:8px}
+.tz-fact .tz-eyebrow{font-size:.66rem}
+.tz-fact .tz-big{font-family:var(--tz-mono);font-size:1.2rem;color:var(--tz-accent-soft);line-height:1.2}
+.tz-fact p{font-size:.94rem;line-height:1.6}
+@media(min-width:820px){.tz-facts{grid-template-columns:1fr 1fr}}
 
 /* dia a dia */
-.tz-daily > div{padding-block:20px;border-top:1px dashed var(--tz-line-soft)}
+.tz-daily > div{padding-block:22px;border-top:1px solid var(--tz-line-soft)}
 .tz-daily > div:first-child{border-top:0;padding-top:2px}
-.tz-daily h3{margin-bottom:7px}
-.tz-daily p{max-width:var(--tz-measure);font-size:.92rem}
+.tz-daily h3{margin-bottom:9px}
 
 /* mapa d'eines */
-.tz-map{margin-top:24px;display:grid;gap:1px;background:var(--tz-line-soft);border:1px solid var(--tz-line-soft)}
-.tz-map div{background:var(--tz-panel);padding:12px 16px;display:grid;gap:2px}
-.tz-map b{color:var(--tz-accent-soft);font-weight:500;font-size:.84rem}
-.tz-map span{font-size:.87rem;color:var(--tz-dim)}
-@media(min-width:700px){.tz-map div{grid-template-columns:16rem minmax(0,1fr);gap:18px;align-items:baseline}}
+.tz-map{margin-top:28px;display:grid;gap:1px;background:var(--tz-line-soft);border:1px solid var(--tz-line-soft)}
+.tz-map div{background:var(--tz-panel);padding:13px 17px;display:grid;gap:3px}
+.tz-map b{font-family:var(--tz-mono);color:var(--tz-accent-soft);font-weight:400;font-size:.8rem;letter-spacing:.02em}
+.tz-map span{font-family:var(--tz-sans);font-size:.92rem;color:var(--tz-dim)}
+@media(min-width:700px){.tz-map div{grid-template-columns:14rem minmax(0,1fr);gap:20px;align-items:baseline}}
 
 /* taula */
 .tz-tablewrap{overflow-x:auto;border:1px solid var(--tz-line);background:var(--tz-panel)}
-.tz-tablewrap table{border-collapse:collapse;width:100%;min-width:540px;font-size:.86rem}
-.tz-tablewrap th,.tz-tablewrap td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--tz-line-soft);vertical-align:top;color:var(--tz-muted)}
-.tz-tablewrap thead th{font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:var(--tz-dim);font-weight:500;background:var(--tz-panel-2)}
+.tz-tablewrap table{border-collapse:collapse;width:100%;min-width:500px;font-size:.9rem;font-family:var(--tz-sans)}
+.tz-tablewrap th,.tz-tablewrap td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--tz-line-soft);vertical-align:middle;color:var(--tz-body)}
+.tz-tablewrap thead th{font-family:var(--tz-mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--tz-faint);font-weight:400;background:transparent}
 .tz-tablewrap tbody tr:last-child td{border-bottom:0}
 .tz-tablewrap td:first-child{color:var(--tz-text)}
-.tz-cap{font-size:.74rem;color:var(--tz-dim);margin-bottom:9px;letter-spacing:.04em}
-.tz-pill{display:inline-block;font-size:.74rem;padding:1px 7px;border:1px solid;white-space:nowrap}
-.tz-pill.ok{color:var(--tz-accent);border-color:#1f4a27;background:#0d1a10}
-.tz-pill.ko{color:var(--tz-warn);border-color:#4a231f;background:#1a0f0d}
+.tz-cap{font-family:var(--tz-mono);font-size:.7rem;color:var(--tz-faint);margin-bottom:10px;letter-spacing:.13em;text-transform:uppercase}
+.tz-pill{display:inline-block;font-family:var(--tz-mono);font-size:.72rem;padding:1px 8px;white-space:nowrap;border:1px solid}
+.tz-pill.ok{color:var(--tz-accent);border-color:#20402a}
+.tz-pill.ko{color:var(--tz-faint);border-color:var(--tz-line)}
 
 /* panells */
-.tz-panel{background:var(--tz-panel);border:1px solid var(--tz-line);border-left:2px solid var(--tz-accent);padding:20px}
-.tz-panel h3{margin-bottom:9px}
-.tz-panel ul{margin:0;padding-left:1.15em}
-.tz-panel li{margin-top:7px;font-size:.9rem;color:var(--tz-muted)}
+.tz-panel{background:var(--tz-panel);border:1px solid var(--tz-line);border-left:2px solid var(--tz-accent);padding:22px}
+.tz-panel h3{margin-bottom:12px}
+.tz-panel ul{margin:0;padding-left:1.1em}
+.tz-panel li{margin-top:9px;font-size:.95rem;line-height:1.6}
 .tz-panel li::marker{color:var(--tz-accent)}
-.tz-fair{border:1px dashed var(--tz-line);padding:20px}
-.tz-fair h3{margin-bottom:9px}
-.tz-fair ul{margin:0;padding-left:1.15em}
-.tz-fair li{margin-top:9px;font-size:.9rem;color:var(--tz-muted)}
-.tz-fair li::marker{color:var(--tz-dim)}
-.tz-warnbox{margin-top:24px;background:var(--tz-panel);border:1px solid var(--tz-line);border-left:2px solid var(--tz-warn);padding:17px 19px}
-.tz-warnbox h3{margin-bottom:6px;font-size:.95rem;color:var(--tz-warn)}
-.tz-warnbox p{font-size:.88rem}
+.tz-fair{padding:0}
+.tz-fair h3{margin-bottom:12px}
+.tz-fair ul{margin:0;padding-left:1.1em}
+.tz-fair li{margin-top:12px;font-size:.97rem;line-height:1.62}
+.tz-fair li::marker{color:var(--tz-faint)}
+.tz-warnbox{margin-top:28px;border:1px solid var(--tz-line);border-left:2px solid var(--tz-warn);padding:18px 20px;background:var(--tz-panel)}
+.tz-warnbox h3{margin-bottom:8px;font-size:.98rem;color:var(--tz-warn)}
+.tz-warnbox p{font-size:.94rem;line-height:1.6}
 
 /* veredicte */
 .tz-verdict{border:1px solid var(--tz-line);background:var(--tz-panel)}
-.tz-verdict-top{padding:22px;border-bottom:1px dashed var(--tz-line);display:flex;flex-direction:column;gap:8px}
-.tz-answer{font-size:clamp(1.3rem,4vw,1.8rem);color:var(--tz-text);letter-spacing:-.02em;line-height:1.2}
+.tz-verdict-top{padding:24px;border-bottom:1px solid var(--tz-line);display:flex;flex-direction:column;gap:10px}
+.tz-answer{font-family:var(--tz-mono);font-size:clamp(1.2rem,3.4vw,1.55rem);color:var(--tz-text);line-height:1.3}
 .tz-answer b{color:var(--tz-accent);font-weight:600}
 .tz-verdict-rows{display:grid;gap:1px;background:var(--tz-line-soft)}
-.tz-vrow{background:var(--tz-panel);padding:13px 22px;display:flex;flex-wrap:wrap;gap:3px 14px;justify-content:space-between;align-items:baseline}
-.tz-vrow .k{font-size:.88rem;color:var(--tz-muted)}
-.tz-vrow .v{font-size:.8rem;color:var(--tz-accent-soft);font-variant-numeric:tabular-nums}
+.tz-vrow{background:var(--tz-panel);padding:14px 24px;display:flex;flex-wrap:wrap;gap:3px 16px;justify-content:space-between;align-items:baseline}
+.tz-vrow .k{font-family:var(--tz-sans);font-size:.94rem;color:var(--tz-body)}
+.tz-vrow .v{font-family:var(--tz-mono);font-size:.78rem;color:var(--tz-accent-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
 
 /* passos */
 .tz-steps{list-style:none;counter-reset:s;margin:0;padding:0}
 .tz-steps li{
-  counter-increment:s;display:grid;grid-template-columns:2.4rem minmax(0,1fr);
-  column-gap:14px;padding:15px 0;border-top:1px dashed var(--tz-line-soft);
+  counter-increment:s;display:grid;grid-template-columns:2.5rem minmax(0,1fr);
+  column-gap:16px;padding:17px 0;border-top:1px solid var(--tz-line-soft);
 }
 .tz-steps li:first-child{border-top:0;padding-top:2px}
 .tz-steps li::before{
   content:counter(s,decimal-leading-zero);grid-column:1;grid-row:1;
-  color:var(--tz-accent);font-size:.8rem;padding-top:.2rem;font-variant-numeric:tabular-nums;
+  font-family:var(--tz-mono);color:var(--tz-accent);font-size:.78rem;
+  padding-top:.3rem;font-variant-numeric:tabular-nums;
 }
-.tz-steps b{grid-column:2;display:block;color:var(--tz-text);font-weight:600;font-size:.94rem;margin-bottom:2px}
-.tz-steps span{grid-column:2;display:block;font-size:.88rem;color:var(--tz-dim)}
+.tz-steps b{grid-column:2;display:block;font-family:var(--tz-sans);color:var(--tz-text);font-weight:600;font-size:.98rem;margin-bottom:3px}
+.tz-steps span{grid-column:2;display:block;font-family:var(--tz-sans);font-size:.93rem;line-height:1.58;color:var(--tz-dim)}
 
 /* preguntes */
-.tz-qs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px}
-.tz-qs li{padding-left:14px;border-left:1px solid var(--tz-line);display:grid;gap:2px}
-.tz-qs b{color:var(--tz-text);font-weight:600;font-size:.92rem}
-.tz-qs span{font-size:.86rem;color:var(--tz-dim)}
+.tz-qs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:15px}
+.tz-qs li{padding-left:16px;border-left:1px solid var(--tz-line);display:grid;gap:3px}
+.tz-qs b{font-family:var(--tz-sans);color:var(--tz-text);font-weight:600;font-size:.96rem}
+.tz-qs span{font-family:var(--tz-sans);font-size:.92rem;line-height:1.55;color:var(--tz-dim)}
 
 /* peu */
-.tz-foot{padding-block:26px 0;border-top:1px dashed var(--tz-line)}
-.tz-foot p{font-size:.8rem;color:var(--tz-dim);max-width:var(--tz-measure)}
-.tz-srcs{margin-top:12px;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.74rem}
-.tz-srcs a{color:var(--tz-dim);text-decoration:none;border-bottom:1px dotted var(--tz-line)}
+.tz-foot{padding-block:30px 0;border-top:1px solid var(--tz-line)}
+.tz-foot p{font-size:.85rem;color:var(--tz-faint);line-height:1.6}
+.tz-srcs{margin-top:14px;display:flex;flex-wrap:wrap;gap:5px 16px;font-family:var(--tz-mono);font-size:.72rem;max-width:var(--tz-col)}
+.tz-srcs a{color:var(--tz-faint);text-decoration:none;border-bottom:1px solid var(--tz-line)}
 .tz-srcs a:hover{color:var(--tz-accent);border-bottom-color:var(--tz-accent)}
 .tz a:focus-visible{outline:1px solid var(--tz-accent);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.tz *{animation:none!important;transition:none!important}}
@@ -173,10 +184,10 @@
     <span class="tz-eyebrow"><b>01</b> · el diagnòstic</span>
     <h2>Què et costa, ara mateix, el flux del navegador</h2>
   </div>
-  <div class="tz-measure">
+  <div>
     <p>Un xat web és una conversa. La feina de tesi no és una conversa: és un corpus de papers, un directori de scripts, un entorn d'R amb paquets concrets, sortides al clúster i un manuscrit que creix durant anys. Quan l'eina només veu el que hi enganxes, passen quatre coses, i totes quatre es paguen cada dia.</p>
   </div>
-  <ul class="tz-grid2" style="margin-top:20px">
+  <ul class="tz-grid2" style="margin-top:22px">
     <li><b>El peatge del copiar i enganxar</b><span>Cada iteració passa per tu: baixar el resultat, tornar-lo a pujar, reexplicar el context. És el gruix del temps perdut.</span></li>
     <li><b>Les figures es perden</b><span>Fora dels plans Enterprise, ChatGPT descarta les imatges dels PDF i només n'extreu el text. Panells de figures, arbres i material suplementari queden invisibles.</span></li>
     <li><b>El context s'omple de seguida</b><span>Amb 8 o 10 articles sencers ja hi ets. A partir d'aquí el sistema deixa de llegir-los i comença a cercar-hi trossos.</span></li>
@@ -189,7 +200,7 @@
     <span class="tz-eyebrow"><b>02</b> · els números</span>
     <h2>Quanta literatura hi cap de debò</h2>
   </div>
-  <div class="tz-measure" style="margin-bottom:22px">
+  <div style="margin-bottom:24px">
     <p>Aquesta és la comparació que decideix mitja discussió, i no és una qüestió d'estil: és una xifra publicada a les pàgines de preus dels dos productes. Barres a escala real.</p>
   </div>
   <div class="tz-bars" role="img" aria-label="Finestra de context: ChatGPT Plus 256.000 tokens, ChatGPT Pro 400.000, Claude Pro 1.000.000">
@@ -226,7 +237,7 @@
     <span class="tz-eyebrow"><b>03</b> · el dia a dia</span>
     <h2>Llegir, discutir, escriure</h2>
   </div>
-  <div class="tz-measure" style="margin-bottom:8px">
+  <div style="margin-bottom:10px">
     <p>Tot l'anterior són canonades. Però el gruix de les hores d'una tesi no és muntar entorns: és llegir papers, discutir què volen dir els resultats i reescriure paràgrafs. Aquí es guanya o es perd la decisió, i és on les comparatives de models solen ser menys útils.</p>
   </div>
   <div class="tz-daily">
@@ -260,7 +271,7 @@
     <span class="tz-eyebrow"><b>04</b> · el canvi de debò</span>
     <h2>Treballar en local, no en una pestanya</h2>
   </div>
-  <div class="tz-measure" style="margin-bottom:22px">
+  <div style="margin-bottom:24px">
     <p>Aquí hi ha la part que no surt a cap comparativa de models i que és la que canvia el dia a dia. Anthropic ha tret <strong>Claude Science</strong>, una aplicació que s'instal·la al portàtil (macOS, Windows i Linux) i està inclosa al pla Pro de 20 $. No és un xat amb fitxers adjunts: és un banc de treball.</p>
   </div>
   <div class="tz-panel">
@@ -273,12 +284,12 @@
       <li><strong>60+ bases de dades científiques</strong> consultables directament: PubMed, bioRxiv, UniProt, Ensembl, ChEMBL, Open Targets…</li>
     </ul>
   </div>
-  <div class="tz-measure" style="margin-top:22px">
+  <div style="margin-top:24px">
     <p>Al costat, i també inclosos a Pro: <strong>Cowork</strong> (connectes carpetes del disc i Claude hi llegeix i hi escriu, amb mode només-lectura si vols, i esborrar sempre demana permís) i <strong>Claude Code</strong> al terminal per als scripts i els pipelines.</p>
     <p>La contrapartida de ChatGPT és <strong>Codex</strong>, que també corre en local i està ben fet, amb permisos per directori. Però és un agent de programació: no té capa de provinença, no té kernel d'R i no és un quadern d'anàlisi. El sandbox de dades de dins de ChatGPT, en canvi, és la part feble del producte: només Python, sense accés a internet i per tant sense instal·lar paquets, i sostre d'uns 50 MB per full de càlcul.</p>
   </div>
-  <p class="tz-cap" style="margin-top:24px">anàlisi de dades · què hi ha dins de cada producte</p>
-  <div class="tz-tablewrap">
+  <p class="tz-cap" style="margin-top:28px">anàlisi de dades · què hi ha dins de cada producte</p>
+  <div class="tz-tablewrap" style="max-width:48rem">
     <table>
       <thead><tr><th>&nbsp;</th><th>claude</th><th>chatgpt</th></tr></thead>
       <tbody>
@@ -321,7 +332,7 @@
     <div class="tz-verdict-top">
       <span class="tz-eyebrow">resposta curta</span>
       <div class="tz-answer"><b>Claude</b>, i treballant-hi en local.</div>
-      <p style="font-size:.9rem">Amb Prism d'OpenAI al costat per al LaTeX, que és gratuït. No hi ha cap raó per pagar dues subscripcions.</p>
+      <p style="font-size:.94rem">Amb Prism d'OpenAI al costat per al LaTeX, que és gratuït. No hi ha cap raó per pagar dues subscripcions.</p>
     </div>
     <div class="tz-verdict-rows">
       <div class="tz-vrow"><span class="k">Claude Pro · inclou Science, Cowork i Claude Code</span><span class="v">20 $/mes · 200 $/any</span></div>
@@ -330,7 +341,7 @@
       <div class="tz-vrow"><span class="k">Prism, per al manuscrit en LaTeX</span><span class="v">gratuït</span></div>
     </div>
   </div>
-  <div class="tz-measure" style="margin-top:20px">
+  <div style="margin-top:22px">
     <p>El pla d'equip per a científics és per a grups de PI d'universitats i centres de recerca sense ànim de lucre en ciències naturals, amb verificació en cinc o sis dies laborables. Si el grup s'hi acull, tot això surt a cost zero i el debat dels 20 € desapareix.</p>
     <p><strong>Pagar tots dos</strong> només es justifica si necessites generar imatges sovint, si el grup ja té ChatGPT com a estàndard compartit, o si entres al programa acadèmic d'OpenAI — i en aquest últim cas és gratuït i tampoc és una segona despesa.</p>
     <p>Dues cauteles honestes: <strong>Claude Science és beta</strong> des del juny del 2026 i s'hi han d'esperar friccions; i Claude no té connector documentat per a Zotero ni arXiv, on Prism sí.</p>
@@ -356,7 +367,7 @@
     <span class="tz-eyebrow"><b>08</b> · pendent</span>
     <h2>Cinc coses que cal confirmar</h2>
   </div>
-  <div class="tz-measure" style="margin-bottom:18px">
+  <div style="margin-bottom:20px">
     <p>Cap d'aquestes respostes canvia la recomanació, però tres canvien com es munta.</p>
   </div>
   <ul class="tz-qs">
