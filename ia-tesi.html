@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IA PER A LA TESI — CCLW_</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<style>
+/* ---- ia-tesi.html · estils propis d'aquesta pàgina, prefix tz- ---- */
+.tz{
+  --tz-bg:#070909;
+  --tz-panel:#0a0d0c;
+  --tz-panel-2:#0e1211;
+  --tz-text:#e5e9e6;
+  --tz-muted:#a6ada8;
+  --tz-dim:#6f7873;
+  --tz-accent:#48e15b;
+  --tz-accent-soft:#9cff8f;
+  --tz-warn:#e15b48;
+  --tz-line:#1c2321;
+  --tz-line-soft:#151a19;
+  --tz-measure:74ch;
+  font-size:15px;
+  line-height:1.72;
+  color:var(--tz-muted);
+}
+.tz *{box-sizing:border-box}
+.tz p{color:var(--tz-muted);margin:0}
+.tz p + p{margin-top:.85em}
+.tz strong{color:var(--tz-text);font-weight:600}
+.tz em{color:var(--tz-text);font-style:normal;border-bottom:1px dotted var(--tz-dim)}
+.tz code{color:var(--tz-accent-soft);font-size:.92em}
+.tz .tz-measure{max-width:var(--tz-measure)}
+
+.tz-sec{padding-block:38px;border-top:1px dashed var(--tz-line)}
+.tz-sec:first-of-type{border-top:0}
+.tz-head{display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+.tz-eyebrow{
+  font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--tz-dim);
+}
+.tz-eyebrow b{color:var(--tz-accent);font-weight:500}
+.tz h2{
+  font-size:clamp(1.25rem,3.4vw,1.7rem);line-height:1.2;letter-spacing:-.02em;
+  color:var(--tz-text);font-weight:500;margin:0;text-wrap:balance;
+}
+.tz h3{
+  font-size:1rem;line-height:1.4;color:var(--tz-text);font-weight:600;margin:0;
+  letter-spacing:-.01em;
+}
+
+/* fricció */
+.tz-grid2{display:grid;gap:1px;background:var(--tz-line-soft);border:1px solid var(--tz-line-soft);margin:0;padding:0;list-style:none}
+.tz-grid2 li{background:var(--tz-panel);padding:15px 17px;display:grid;gap:4px}
+.tz-grid2 b{color:var(--tz-text);font-weight:600;font-size:.94rem}
+.tz-grid2 span{font-size:.88rem;color:var(--tz-dim)}
+@media(min-width:700px){.tz-grid2{grid-template-columns:1fr 1fr}}
+
+/* barres de context */
+.tz-bars{display:flex;flex-direction:column;gap:15px}
+.tz-bar{display:grid;gap:6px}
+.tz-bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.tz-bar-name{font-size:.88rem;color:var(--tz-muted)}
+.tz-bar-num{font-size:.8rem;color:var(--tz-dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tz-track{height:14px;background:var(--tz-panel-2);border:1px solid var(--tz-line)}
+.tz-fill{height:100%;background:#22452a}
+.tz-bar.is-hero .tz-fill{background:var(--tz-accent)}
+.tz-bar.is-hero .tz-bar-name{color:var(--tz-text)}
+.tz-bar.is-hero .tz-bar-num{color:var(--tz-accent-soft)}
+.tz-note{font-size:.76rem;color:var(--tz-dim);border-top:1px dashed var(--tz-line);padding-top:11px;line-height:1.65}
+
+/* fets */
+.tz-facts{display:grid;gap:12px;margin-top:24px}
+@media(min-width:700px){.tz-facts{grid-template-columns:1fr 1fr}}
+.tz-fact{background:var(--tz-panel);border:1px solid var(--tz-line);padding:17px;display:flex;flex-direction:column;gap:7px}
+.tz-fact .tz-eyebrow{font-size:.68rem}
+.tz-fact .tz-big{font-size:1.3rem;color:var(--tz-accent-soft);letter-spacing:-.02em;line-height:1.15}
+.tz-fact p{font-size:.88rem}
+
+/* dia a dia */
+.tz-daily > div{padding-block:20px;border-top:1px dashed var(--tz-line-soft)}
+.tz-daily > div:first-child{border-top:0;padding-top:2px}
+.tz-daily h3{margin-bottom:7px}
+.tz-daily p{max-width:var(--tz-measure);font-size:.92rem}
+
+/* mapa d'eines */
+.tz-map{margin-top:24px;display:grid;gap:1px;background:var(--tz-line-soft);border:1px solid var(--tz-line-soft)}
+.tz-map div{background:var(--tz-panel);padding:12px 16px;display:grid;gap:2px}
+.tz-map b{color:var(--tz-accent-soft);font-weight:500;font-size:.84rem}
+.tz-map span{font-size:.87rem;color:var(--tz-dim)}
+@media(min-width:700px){.tz-map div{grid-template-columns:16rem minmax(0,1fr);gap:18px;align-items:baseline}}
+
+/* taula */
+.tz-tablewrap{overflow-x:auto;border:1px solid var(--tz-line);background:var(--tz-panel)}
+.tz-tablewrap table{border-collapse:collapse;width:100%;min-width:540px;font-size:.86rem}
+.tz-tablewrap th,.tz-tablewrap td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--tz-line-soft);vertical-align:top;color:var(--tz-muted)}
+.tz-tablewrap thead th{font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:var(--tz-dim);font-weight:500;background:var(--tz-panel-2)}
+.tz-tablewrap tbody tr:last-child td{border-bottom:0}
+.tz-tablewrap td:first-child{color:var(--tz-text)}
+.tz-cap{font-size:.74rem;color:var(--tz-dim);margin-bottom:9px;letter-spacing:.04em}
+.tz-pill{display:inline-block;font-size:.74rem;padding:1px 7px;border:1px solid;white-space:nowrap}
+.tz-pill.ok{color:var(--tz-accent);border-color:#1f4a27;background:#0d1a10}
+.tz-pill.ko{color:var(--tz-warn);border-color:#4a231f;background:#1a0f0d}
+
+/* panells */
+.tz-panel{background:var(--tz-panel);border:1px solid var(--tz-line);border-left:2px solid var(--tz-accent);padding:20px}
+.tz-panel h3{margin-bottom:9px}
+.tz-panel ul{margin:0;padding-left:1.15em}
+.tz-panel li{margin-top:7px;font-size:.9rem;color:var(--tz-muted)}
+.tz-panel li::marker{color:var(--tz-accent)}
+.tz-fair{border:1px dashed var(--tz-line);padding:20px}
+.tz-fair h3{margin-bottom:9px}
+.tz-fair ul{margin:0;padding-left:1.15em}
+.tz-fair li{margin-top:9px;font-size:.9rem;color:var(--tz-muted)}
+.tz-fair li::marker{color:var(--tz-dim)}
+.tz-warnbox{margin-top:24px;background:var(--tz-panel);border:1px solid var(--tz-line);border-left:2px solid var(--tz-warn);padding:17px 19px}
+.tz-warnbox h3{margin-bottom:6px;font-size:.95rem;color:var(--tz-warn)}
+.tz-warnbox p{font-size:.88rem}
+
+/* veredicte */
+.tz-verdict{border:1px solid var(--tz-line);background:var(--tz-panel)}
+.tz-verdict-top{padding:22px;border-bottom:1px dashed var(--tz-line);display:flex;flex-direction:column;gap:8px}
+.tz-answer{font-size:clamp(1.3rem,4vw,1.8rem);color:var(--tz-text);letter-spacing:-.02em;line-height:1.2}
+.tz-answer b{color:var(--tz-accent);font-weight:600}
+.tz-verdict-rows{display:grid;gap:1px;background:var(--tz-line-soft)}
+.tz-vrow{background:var(--tz-panel);padding:13px 22px;display:flex;flex-wrap:wrap;gap:3px 14px;justify-content:space-between;align-items:baseline}
+.tz-vrow .k{font-size:.88rem;color:var(--tz-muted)}
+.tz-vrow .v{font-size:.8rem;color:var(--tz-accent-soft);font-variant-numeric:tabular-nums}
+
+/* passos */
+.tz-steps{list-style:none;counter-reset:s;margin:0;padding:0}
+.tz-steps li{
+  counter-increment:s;display:grid;grid-template-columns:2.4rem minmax(0,1fr);
+  column-gap:14px;padding:15px 0;border-top:1px dashed var(--tz-line-soft);
+}
+.tz-steps li:first-child{border-top:0;padding-top:2px}
+.tz-steps li::before{
+  content:counter(s,decimal-leading-zero);grid-column:1;grid-row:1;
+  color:var(--tz-accent);font-size:.8rem;padding-top:.2rem;font-variant-numeric:tabular-nums;
+}
+.tz-steps b{grid-column:2;display:block;color:var(--tz-text);font-weight:600;font-size:.94rem;margin-bottom:2px}
+.tz-steps span{grid-column:2;display:block;font-size:.88rem;color:var(--tz-dim)}
+
+/* preguntes */
+.tz-qs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px}
+.tz-qs li{padding-left:14px;border-left:1px solid var(--tz-line);display:grid;gap:2px}
+.tz-qs b{color:var(--tz-text);font-weight:600;font-size:.92rem}
+.tz-qs span{font-size:.86rem;color:var(--tz-dim)}
+
+/* peu */
+.tz-foot{padding-block:26px 0;border-top:1px dashed var(--tz-line)}
+.tz-foot p{font-size:.8rem;color:var(--tz-dim);max-width:var(--tz-measure)}
+.tz-srcs{margin-top:12px;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.74rem}
+.tz-srcs a{color:var(--tz-dim);text-decoration:none;border-bottom:1px dotted var(--tz-line)}
+.tz-srcs a:hover{color:var(--tz-accent);border-bottom-color:var(--tz-accent)}
+.tz a:focus-visible{outline:1px solid var(--tz-accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.tz *{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+<main class="shell subpage tz">
+<a class="back" href="./lab.html">&lt; cd ..</a>
+<p class="prompt">~/ lab / ia-tesi</p>
+<h1>IA PER A LA TESI<span class="cursor">_</span></h1>
+<p class="lead">Claude o ChatGPT per a una tesi doctoral. La pregunta sembla quina IA és millor, però el coll d'ampolla no és el model: és treballar-hi des d'una pestanya del navegador.</p>
+
+<section class="tz-sec">
+  <div class="tz-head">
+    <span class="tz-eyebrow"><b>01</b> · el diagnòstic</span>
+    <h2>Què et costa, ara mateix, el flux del navegador</h2>
+  </div>
+  <div class="tz-measure">
+    <p>Un xat web és una conversa. La feina de tesi no és una conversa: és un corpus de papers, un directori de scripts, un entorn d'R amb paquets concrets, sortides al clúster i un manuscrit que creix durant anys. Quan l'eina només veu el que hi enganxes, passen quatre coses, i totes quatre es paguen cada dia.</p>
+  </div>
+  <ul class="tz-grid2" style="margin-top:20px">
+    <li><b>El peatge del copiar i enganxar</b><span>Cada iteració passa per tu: baixar el resultat, tornar-lo a pujar, reexplicar el context. És el gruix del temps perdut.</span></li>
+    <li><b>Les figures es perden</b><span>Fora dels plans Enterprise, ChatGPT descarta les imatges dels PDF i només n'extreu el text. Panells de figures, arbres i material suplementari queden invisibles.</span></li>
+    <li><b>El context s'omple de seguida</b><span>Amb 8 o 10 articles sencers ja hi ets. A partir d'aquí el sistema deixa de llegir-los i comença a cercar-hi trossos.</span></li>
+    <li><b>Res és reconstruïble</b><span>Sis mesos després no pots dir d'on va sortir aquella xifra, amb quin codi ni amb quin entorn. Per a una tesi, això és el problema seriós.</span></li>
+  </ul>
+</section>
+
+<section class="tz-sec">
+  <div class="tz-head">
+    <span class="tz-eyebrow"><b>02</b> · els números</span>
+    <h2>Quanta literatura hi cap de debò</h2>
+  </div>
+  <div class="tz-measure" style="margin-bottom:22px">
+    <p>Aquesta és la comparació que decideix mitja discussió, i no és una qüestió d'estil: és una xifra publicada a les pàgines de preus dels dos productes. Barres a escala real.</p>
+  </div>
+  <div class="tz-bars" role="img" aria-label="Finestra de context: ChatGPT Plus 256.000 tokens, ChatGPT Pro 400.000, Claude Pro 1.000.000">
+    <div class="tz-bar">
+      <div class="tz-bar-top"><span class="tz-bar-name">chatgpt plus · models de raonament</span><span class="tz-bar-num">256.000 · ~10 articles</span></div>
+      <div class="tz-track"><div class="tz-fill" style="width:25.6%"></div></div>
+    </div>
+    <div class="tz-bar">
+      <div class="tz-bar-top"><span class="tz-bar-name">chatgpt pro · 100–200 $/mes</span><span class="tz-bar-num">400.000 · ~16 articles</span></div>
+      <div class="tz-track"><div class="tz-fill" style="width:40%"></div></div>
+    </div>
+    <div class="tz-bar is-hero">
+      <div class="tz-bar-top"><span class="tz-bar-name">claude pro · 20 $/mes</span><span class="tz-bar-num">1.000.000 · ~40 articles</span></div>
+      <div class="tz-track"><div class="tz-fill" style="width:100%"></div></div>
+    </div>
+    <p class="tz-note">Tokens de finestra de context dins del producte, no de l'API. Equivalència a ~2.000 tokens per pàgina de PDF dens i ~12 pàgines per article. El mode instantani de ChatGPT és encara més curt: 54.000 a Plus, 128.000 a Pro.</p>
+  </div>
+  <div class="tz-facts">
+    <div class="tz-fact">
+      <span class="tz-eyebrow">figures dins del pdf</span>
+      <span class="tz-big">100 pàgines</span>
+      <p>Claude en llegeix les figures, els eixos i les taules directament, fins a 100 pàgines per document, i el text fins a 1.000. ChatGPT, fora d'Enterprise, no les veu: les has de retallar i pujar una per una.</p>
+    </div>
+    <div class="tz-fact">
+      <span class="tz-eyebrow">quan deixa de llegir i es posa a cercar</span>
+      <span class="tz-big">110K contra 1M</span>
+      <p>ChatGPT posa en context els primers ~110.000 tokens dels fitxers d'un projecte i la resta la indexa. Claude carrega tot el projecte fins a omplir la finestra d'1M. La lectura completa es perd nou vegades més tard.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tz-sec">
+  <div class="tz-head">
+    <span class="tz-eyebrow"><b>03</b> · el dia a dia</span>
+    <h2>Llegir, discutir, escriure</h2>
+  </div>
+  <div class="tz-measure" style="margin-bottom:8px">
+    <p>Tot l'anterior són canonades. Però el gruix de les hores d'una tesi no és muntar entorns: és llegir papers, discutir què volen dir els resultats i reescriure paràgrafs. Aquí es guanya o es perd la decisió, i és on les comparatives de models solen ser menys útils.</p>
+  </div>
+  <div class="tz-daily">
+    <div>
+      <h3>Discutir hipòtesis i interpretar resultats</h3>
+      <p>Aquesta és la part més subjectiva de tota la comparació, i qui digui el contrari t'està venent alguna cosa. Els dos models raonen bé; quin et va millor com a interlocutor depèn de com penses tu. Una setmana provant-los tots dos amb el mateix problema teu val més que qualsevol <em>benchmark</em>.</p>
+      <p>El que sí que és objectiu és <strong>quanta cosa pots tenir sobre la taula mentre discuteixes</strong>. Defensar una interpretació amb els sis papers rellevants, la sortida de l'anàlisi i el teu esborrany carregats alhora no s'assembla a defensar-la de memòria. També compta que a ChatGPT Plus els nivells de raonament alt estan capats: «Extra High» i «Pro» només són als plans de 100 i 200 $.</p>
+    </div>
+    <div>
+      <h3>Cercar i sintetitzar literatura</h3>
+      <p>Tots dos tenen mode de recerca agèntica —Research a Claude, Deep Research a ChatGPT—, tots dos citen les fonts i <strong>tots dos s'inventen coses</strong>. No és una acusació de part: OpenAI ho diu a la seva pròpia pàgina de Deep Research, que pot al·lucinar fets, que li costa distingir una font sòlida d'un rumor i que calibra malament la confiança. La regla pràctica és la mateixa amb els dos: cap citació entra al manuscrit sense obrir-la.</p>
+      <p>Dues diferències reals: Claude Science porta un revisor que marca citacions incorrectes i xifres que no es poden traçar, mentre que a ChatGPT la verificació és íntegrament feina teva; i cap dels dos arriba a literatura de pagament pel seu compte, només pels connectors que hi endollis.</p>
+    </div>
+    <div>
+      <h3>Escriure el manuscrit i sostenir-lo quatre anys</h3>
+      <p>Un capítol de tesi amb la seva bibliografia al costat no cap en 256.000 tokens. Amb un milió sí: el capítol sencer, els articles que cita i les figures, tot a la mateixa conversa mentre el reescrius. La diferència no és que redacti més bonic, és que no perd de vista el que has escrit tres seccions més amunt.</p>
+      <p>Per a la continuïtat de quatre anys la peça és <strong>Projects</strong>: cada projecte té memòria pròpia, separada de la resta, i el coneixement que hi poses es carrega sencer fins a omplir la finestra. És el que evita tornar a explicar el context cada dilluns al matí.</p>
+    </div>
+  </div>
+  <div class="tz-map">
+    <div><b>claude.ai · web i app</b><span>Llegir papers, discutir resultats, escriure. El lloc per defecte.</span></div>
+    <div><b>claude science</b><span>Anàlisi amb R i Python, feina al clúster, figures amb provinença.</span></div>
+    <div><b>cowork</b><span>Carpetes del disc: fitxers, dades, informes, coses que no són codi.</span></div>
+    <div><b>claude code</b><span>Terminal: scripts, pipelines, repositoris.</span></div>
+    <div><b>prism · d'openai, gratuït</b><span>El manuscrit en LaTeX amb els coautors.</span></div>
+  </div>
+</section>
+
+<section class="tz-sec">
+  <div class="tz-head">
+    <span class="tz-eyebrow"><b>04</b> · el canvi de debò</span>
+    <h2>Treballar en local, no en una pestanya</h2>
+  </div>
+  <div class="tz-measure" style="margin-bottom:22px">
+    <p>Aquí hi ha la part que no surt a cap comparativa de models i que és la que canvia el dia a dia. Anthropic ha tret <strong>Claude Science</strong>, una aplicació que s'instal·la al portàtil (macOS, Windows i Linux) i està inclosa al pla Pro de 20 $. No és un xat amb fitxers adjunts: és un banc de treball.</p>
+  </div>
+  <div class="tz-panel">
+    <h3>Claude Science, en concret</h3>
+    <ul>
+      <li><strong>Kernels persistents d'R i de Python.</strong> Els dataframes i els objectes carregats es queden en memòria durant tota l'anàlisi. No hi ha cap altre lloc, en tots dos productes, on R estigui disponible de sèrie.</li>
+      <li><strong>Feina al clúster per SSH.</strong> Llegeix el teu <code>~/.ssh/config</code>, detecta si hi ha Slurm i envia els treballs amb <code>sbatch</code>, sense instal·lar res a l'host. Els treballs sobreviuen a la caiguda de la connexió i els resultats tornen sols.</li>
+      <li><strong>Provinença de cada artefacte.</strong> Cada figura i cada taula arrossega el codi exacte que la va generar, l'entorn on va córrer i la conversa que hi va portar.</li>
+      <li><strong>Un revisor en segon pla</strong> que marca citacions incorrectes, xifres no traçables i figures que no quadren amb el codi que les ha produït.</li>
+      <li><strong>60+ bases de dades científiques</strong> consultables directament: PubMed, bioRxiv, UniProt, Ensembl, ChEMBL, Open Targets…</li>
+    </ul>
+  </div>
+  <div class="tz-measure" style="margin-top:22px">
+    <p>Al costat, i també inclosos a Pro: <strong>Cowork</strong> (connectes carpetes del disc i Claude hi llegeix i hi escriu, amb mode només-lectura si vols, i esborrar sempre demana permís) i <strong>Claude Code</strong> al terminal per als scripts i els pipelines.</p>
+    <p>La contrapartida de ChatGPT és <strong>Codex</strong>, que també corre en local i està ben fet, amb permisos per directori. Però és un agent de programació: no té capa de provinença, no té kernel d'R i no és un quadern d'anàlisi. El sandbox de dades de dins de ChatGPT, en canvi, és la part feble del producte: només Python, sense accés a internet i per tant sense instal·lar paquets, i sostre d'uns 50 MB per full de càlcul.</p>
+  </div>
+  <p class="tz-cap" style="margin-top:24px">anàlisi de dades · què hi ha dins de cada producte</p>
+  <div class="tz-tablewrap">
+    <table>
+      <thead><tr><th>&nbsp;</th><th>claude</th><th>chatgpt</th></tr></thead>
+      <tbody>
+        <tr><td>R disponible</td><td><span class="tz-pill ok">sí · claude science</span></td><td><span class="tz-pill ko">no</span> · només el teu R via Codex</td></tr>
+        <tr><td>Instal·lar paquets a l'entorn</td><td><span class="tz-pill ok">sí</span></td><td><span class="tz-pill ko">no</span> dins del xat</td></tr>
+        <tr><td>Enviar feina a Slurm</td><td><span class="tz-pill ok">sí</span></td><td><span class="tz-pill ko">no</span></td></tr>
+        <tr><td>Codi → figura traçable</td><td><span class="tz-pill ok">artefactes amb provinença</span></td><td>git, pel teu compte</td></tr>
+        <tr><td>Entrenament amb les teves dades</td><td><span class="tz-pill ok">desactivat per defecte</span></td><td><span class="tz-pill ko">activat per defecte</span> · Codex té un interruptor a part</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tz-warnbox">
+    <h3>«en local» no vol dir «privat»</h3>
+    <p>Amb tots dos productes el model corre als seus servidors: el que canvia és que l'eina arriba als teus fitxers, no que les dades es quedin al portàtil. I connectar carpetes té un risc propi: un PDF o una pàgina de tercers poden portar instruccions amagades dirigides a l'agent. Per això no s'hi posen credencials ni documents sensibles, i per això esborrar demana sempre permís explícit.</p>
+  </div>
+</section>
+
+<section class="tz-sec">
+  <div class="tz-head">
+    <span class="tz-eyebrow"><b>05</b> · joc net</span>
+    <h2>On ChatGPT continua guanyant</h2>
+  </div>
+  <div class="tz-fair">
+    <h3>Tres coses reals, i una que encara no compta</h3>
+    <ul>
+      <li><strong>Prism, per als manuscrits en LaTeX.</strong> Editor LaTeX al núvol, gratuït i sense pla de pagament, amb col·laboradors il·limitats, cerca de literatura dins del document i sincronització amb Zotero. Si escrius en LaTeX amb coautors, això és millor que qualsevol cosa que tingui Claude, que no té equivalent col·laboratiu. I com que és gratis, fer-lo servir no vol dir mantenir dues subscripcions.</li>
+      <li><strong>Generació d'imatges.</strong> Per a esquemes de mecanismes i <em>graphical abstracts</em>, ChatGPT en fa i Claude no en fa gens.</li>
+      <li><strong>Programa acadèmic d'OpenAI.</strong> Fins a 5 seients gratuïts durant 12 mesos amb límits de nivell Pro, més de 75 <em>skills</em> de ciències de la vida i connectors a literatura i bases genòmiques. El requisit parla de professorat investigador i postdocs amb article recent, així que la via realista per a una predoctoral és entrar com a seient convidat pel PI.</li>
+      <li><strong>GPT-Rosalind</strong>, el model d'OpenAI per a ciències de la vida, és potent però no és accessible ni a Plus ni a Pro: només organitzacions Enterprise amb accés aprovat. Avui no és un argument; d'aquí un any potser sí.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="tz-sec">
+  <div class="tz-head">
+    <span class="tz-eyebrow"><b>06</b> · la recomanació</span>
+    <h2>Un sol sistema de pagament, i pot ser zero euros</h2>
+  </div>
+  <div class="tz-verdict">
+    <div class="tz-verdict-top">
+      <span class="tz-eyebrow">resposta curta</span>
+      <div class="tz-answer"><b>Claude</b>, i treballant-hi en local.</div>
+      <p style="font-size:.9rem">Amb Prism d'OpenAI al costat per al LaTeX, que és gratuït. No hi ha cap raó per pagar dues subscripcions.</p>
+    </div>
+    <div class="tz-verdict-rows">
+      <div class="tz-vrow"><span class="k">Claude Pro · inclou Science, Cowork i Claude Code</span><span class="v">20 $/mes · 200 $/any</span></div>
+      <div class="tz-vrow"><span class="k">Pla d'equip per a científics, verificat pel PI · seient estàndard</span><span class="v">0 €/mes, 12 mesos</span></div>
+      <div class="tz-vrow"><span class="k">Mateix pla · seient premium, 5× d'ús</span><span class="v">15 $/mes en lloc de 100 $</span></div>
+      <div class="tz-vrow"><span class="k">Prism, per al manuscrit en LaTeX</span><span class="v">gratuït</span></div>
+    </div>
+  </div>
+  <div class="tz-measure" style="margin-top:20px">
+    <p>El pla d'equip per a científics és per a grups de PI d'universitats i centres de recerca sense ànim de lucre en ciències naturals, amb verificació en cinc o sis dies laborables. Si el grup s'hi acull, tot això surt a cost zero i el debat dels 20 € desapareix.</p>
+    <p><strong>Pagar tots dos</strong> només es justifica si necessites generar imatges sovint, si el grup ja té ChatGPT com a estàndard compartit, o si entres al programa acadèmic d'OpenAI — i en aquest últim cas és gratuït i tampoc és una segona despesa.</p>
+    <p>Dues cauteles honestes: <strong>Claude Science és beta</strong> des del juny del 2026 i s'hi han d'esperar friccions; i Claude no té connector documentat per a Zotero ni arXiv, on Prism sí.</p>
+  </div>
+</section>
+
+<section class="tz-sec">
+  <div class="tz-head">
+    <span class="tz-eyebrow"><b>07</b> · per començar</span>
+    <h2>La primera setmana</h2>
+  </div>
+  <ol class="tz-steps">
+    <li><b>Abans de res, apagar l'entrenament</b><span>A ChatGPT està activat per defecte i Codex té un interruptor separat. A Claude ja ve desactivat. Fes-ho abans que hi passi cap dada no publicada.</span></li>
+    <li><b>Demanar al PI la verificació del pla per a científics</b><span>És el pas que converteix això en zero euros, i triga cinc o sis dies. Val la pena engegar-lo el primer dia.</span></li>
+    <li><b>Instal·lar Claude Science i connectar el clúster</b><span>Configuració → Compute → hosts SSH, amb la teva clau. No instal·la res a l'altra banda. Prova-hi un treball petit per veure el cicle sencer.</span></li>
+    <li><b>Moure un capítol sencer, no una pregunta</b><span>La prova bona no és «resumeix-me aquest paper». És agafar una figura que ja tinguis feta i reconstruir-la amb provinença: dades, codi, entorn, peu de figura.</span></li>
+    <li><b>Escriure-ho com a skill quan funcioni</b><span>El QC d'amplicons, l'estil de figura, la plantilla de mètodes de la revista. Un cop encapsulat deixa de ser un prompt que t'has de recordar i passa a ser part de l'eina.</span></li>
+  </ol>
+</section>
+
+<section class="tz-sec">
+  <div class="tz-head">
+    <span class="tz-eyebrow"><b>08</b> · pendent</span>
+    <h2>Cinc coses que cal confirmar</h2>
+  </div>
+  <div class="tz-measure" style="margin-bottom:18px">
+    <p>Cap d'aquestes respostes canvia la recomanació, però tres canvien com es munta.</p>
+  </div>
+  <ul class="tz-qs">
+    <li><b>LaTeX o Word?</b><span>Decideix si Prism entra a la combinació o hi sobra del tot.</span></li>
+    <li><b>R o Python, i al portàtil o al clúster?</b><span>Si és R al clúster, Claude Science és l'argument central. Si és Python al portàtil, la distància amb Codex s'estreny força.</span></li>
+    <li><b>Qui paga, i el PI verificaria el grup?</b><span>Si sí, el cost és zero i deixa de ser una decisió de pressupost.</span></li>
+    <li><b>Quin sistema operatiu té el portàtil?</b><span>A Windows hi ha limitacions concretes: el sandbox de Claude Code només sota WSL2, i Claude Science només amb carpetes locals, no unitats de xarxa.</span></li>
+    <li><b>Hi haurà dades no publicades o de tercers amb confidencialitat?</b><span>Cap pla de consum dels dos ofereix residència de dades a la UE. Si el centre ho exigeix, la via és l'acord institucional, no una subscripció individual.</span></li>
+  </ul>
+</section>
+
+<div class="tz-foot">
+  <p>Xifres de documentació oficial d'Anthropic i d'OpenAI consultada el 12 de setembre de 2026. Els productes canvien de mes en mes: verifica-les abans de decidir res sobre aquesta base d'aquí a un temps.</p>
+  <div class="tz-srcs">
+    <a href="https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans">claude · context per pla</a>
+    <a href="https://chatgpt.com/pricing/">chatgpt · plans i context</a>
+    <a href="https://support.claude.com/en/articles/8241126-upload-files-to-claude">claude · límits de pdf</a>
+    <a href="https://help.openai.com/en/articles/8555545-file-uploads-faq">chatgpt · fitxers i imatges</a>
+    <a href="https://claude.com/product/claude-science">claude science</a>
+    <a href="https://claude.com/docs/claude-science/remote-compute-clusters">claude science · clústers</a>
+    <a href="https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt">chatgpt · anàlisi de dades</a>
+    <a href="https://openai.com/prism/">prism</a>
+    <a href="https://claude.com/programs/team-plan-for-scientists">pla per a científics</a>
+    <a href="https://help.openai.com/en/articles/20001406-chatgpt-for-academic-researchers">programa acadèmic openai</a>
+    <a href="https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training">claude · dades i entrenament</a>
+    <a href="https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance">openai · dades i entrenament</a>
+  </div>
+</div>
+
+</main>
+</body>
+</html>
