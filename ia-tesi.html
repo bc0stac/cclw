@@ -28,6 +28,40 @@
 }
 .tz *{box-sizing:border-box}
 
+/* ---- base de reserva: només actua si styles.css no hi és ----
+   Totes les regles van dins de :where(), o sigui a especificitat zero:
+   qualsevol regla del styles.css del lloc les guanya sense discussió. */
+:where(html){background:#070909}
+:where(body){
+  margin:0;background:#070909;color:#c3ccc7;
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+}
+:where(main.tz){
+  display:block;max-width:min(1080px,100%);margin:0 auto;
+  padding-left:clamp(20px,5vw,56px);padding-right:clamp(20px,5vw,56px);
+  padding-block:40px 88px;
+}
+:where(main.tz .back){
+  display:inline-block;font-family:var(--tz-mono);font-size:.78rem;
+  color:var(--tz-faint);text-decoration:none;letter-spacing:.04em;
+}
+:where(main.tz .back:hover){color:var(--tz-accent)}
+:where(main.tz .prompt){
+  font-family:var(--tz-mono);font-size:.75rem;color:var(--tz-faint);
+  letter-spacing:.12em;text-transform:uppercase;margin:22px 0 6px;
+}
+:where(main.tz h1){
+  font-family:var(--tz-mono);font-weight:500;
+  font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.12;letter-spacing:-.02em;
+  color:var(--tz-text);margin:0 0 18px;
+}
+:where(main.tz .cursor){color:var(--tz-accent)}
+:where(main.tz .lead){margin:0 0 4px}
+:where(.scanlines){
+  position:fixed;inset:0;pointer-events:none;z-index:2;
+  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.014) 0 1px,transparent 1px 3px);
+}
+
 /* una sola amplada de columna per a tot */
 .tz-sec > *,.tz-foot > *{max-width:var(--tz-col)}
 .tz .lead{
